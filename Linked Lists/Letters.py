@@ -10,7 +10,6 @@ class Letters:
 
     def insert(self, data): 
         new_node = Node(data)
-
         if self.tail == None:
             self.tail = new_node
         else: 
@@ -37,7 +36,6 @@ class Letters:
         while (current != None and position + 1 != index):
             position = position + 1 
             current = current.next 
-
         if current != None: 
             new_node = Node(data)
             new_node.next = current.next 
@@ -45,18 +43,18 @@ class Letters:
         else:
             print("Index not present")
 
-    def search(self, value):
+    def search(self, letter):
         current = self.tail 
         index = 0 
         while current is not None: 
-            if current.data == value:
-                print(f"Value {value} found at index {index}")
+            if current.data == letter:
+                print(f"Letter {letter} found at index {index}")
                 return True
             current = current.next
             index += 1
-        print("Value not found")
+        print("Letter not found")
         return False 
-
+    
     def deleteFirstNode(self):
         if self.tail == None: 
             return
@@ -64,19 +62,18 @@ class Letters:
 
     def deleteNode(self, data):
         current = self.tail 
-        if current.data == data: 
+        if current.data == data:
             self.deleteFirstNode()
             return
         while current is not None and current.next.data != data: 
             current = current.next 
-
         if current is None:
             return
         else:
             current.next = current.next.next 
 
+    
     def clear(self):
-        current = None
         self.tail = None 
         print("list cleared")
 
@@ -84,13 +81,19 @@ alphabet_letters = Letters()
 alphabet_letters.insert("A")  
 alphabet_letters.insert("B") 
 alphabet_letters.insert("C") 
-alphabet_letters.insertAtIndex("D", 1)  
+alphabet_letters.insert("D") 
+alphabet_letters.insert("E") 
+alphabet_letters.insert("F") 
+alphabet_letters.insertAtIndex("G", 1)  
+alphabet_letters.insertAtIndex("H", 4)  
 alphabet_letters.traverse() 
 
-alphabet_letters.search("D")
+alphabet_letters.search("C")
+alphabet_letters.search("E")
 
 print("linked list after removing a node")
 alphabet_letters.deleteNode("B")
+alphabet_letters.deleteNode("F")
 alphabet_letters.traverse() 
 
 alphabet_letters.clear()
