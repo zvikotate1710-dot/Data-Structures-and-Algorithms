@@ -13,8 +13,8 @@ class Plates:
             self.top = new_node 
         else:
             new_node.next = self.top
-            self.top = new_node
-        
+            self.top = new_node 
+    
     def peek(self):
         if self.top: 
             return self.top.data
