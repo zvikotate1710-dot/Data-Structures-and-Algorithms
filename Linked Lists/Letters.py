@@ -43,6 +43,14 @@ class Letters:
         else:
             print("Index not present")
 
+    def size(self):
+        count = 0 
+        current = self.tail
+        while current:
+            count += 1
+            current = current.next 
+        return count 
+
     def search(self, letter):
         current = self.tail 
         index = 0 
@@ -55,23 +63,21 @@ class Letters:
         print("Letter not found")
         return False 
     
-    def deleteFirstNode(self):
-        if self.tail == None: 
-            return
-        self.tail = self.tail.next 
-
     def deleteNode(self, data):
-        current = self.tail 
-        if current.data == data:
-            self.deleteFirstNode()
+        if self.tail == None:
             return
-        while current is not None and current.next.data != data: 
-            current = current.next 
-        if current is None:
-            return
-        else:
-            current.next = current.next.next 
-
+        current = self.tail
+        prev = self.tail 
+        while current:
+            if current.data == data:
+                if current ==self.tail:
+                    self.tail = current.next 
+                else:
+                    prev.next = current.next 
+                return True
+            prev = current  
+            current = current.next
+        return False
     
     def clear(self):
         self.tail = None 
@@ -87,6 +93,8 @@ alphabet_letters.insert("F")
 alphabet_letters.insertAtIndex("G", 1)  
 alphabet_letters.insertAtIndex("H", 4)  
 alphabet_letters.traverse() 
+
+alphabet_letters.size()
 
 alphabet_letters.search("C")
 alphabet_letters.search("E")
