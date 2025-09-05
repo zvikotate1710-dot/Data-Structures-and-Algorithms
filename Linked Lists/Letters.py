@@ -49,7 +49,8 @@ class Letters:
         while current:
             count += 1
             current = current.next 
-        return count 
+            return(count)
+        
 
     def search(self, letter):
         current = self.tail 
