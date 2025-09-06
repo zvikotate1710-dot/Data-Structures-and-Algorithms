@@ -78,8 +78,9 @@ class LinkedList:
             count += 1 
 
 '''
-linked list for numbers 
+linked list for integers 
 '''
+print("Linked list for integers:")
 ll = LinkedList()
 ll.insert_at_beginning(10)
 ll.insert_at_beginning(20)
@@ -93,10 +94,13 @@ ll.insert_at(0, 5)
 ll.print() 
 ll.remove_at(2)
 ll.print()
+print("Length of linked list:", ll.get_length())
+print(" ")
 
 '''
 linked list for strings
 '''
+print("Linked list for strings:")
 ll.insert_values(["apple", "banana", "cherry"])
 ll.print()
 ll.insert_at(0, "orange")
