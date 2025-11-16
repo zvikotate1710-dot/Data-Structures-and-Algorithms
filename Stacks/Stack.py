@@ -1,51 +1,46 @@
-class Node: 
-    def __init__(self, data = None):
-        self.data = data 
-        self.next = None 
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
 
-class Plates: 
+class myStack:
     def __init__(self):
-        self.top = None 
+        self.top = None
+
+    def is_empty(self):
+        return self.top is None
 
     def push(self, data):
         new_node = Node(data)
-        if self.top == None:
-            self.top = new_node
-        else:
-            new_node.next = self.top
-            self.top = new_node
+        new_node.next = self.top
+        self.top = new_node
 
-    def get_stack(self):
-        elements = []
-        current_node = self.top
-        while current_node:
-            elements.append(current_node.data)
-            current_node = current_node.next
-        return elements
+    def pop(self):
+        if self.top is None:
+            return None
+        popped_data = self.top.data
+        self.top = self.top.next
+        return popped_data
 
     def peek(self):
-        if self.top: 
+        if self.top is None:
             return None
         return self.top.data
+
+if __name__ == "__main__":
+    stack = myStack()
+    stack.push(10)
+    stack.push(20)
+    stack.push(30)
     
-    def pop(self): 
-        if self.top:
-            data = self.top.data
-            if self.top.next: 
-                self.top = self.top.next 
-            else: 
-                self.top = None
-            return data 
-        
-plates_obj = Plates()
-plates_obj.push("orange plate")
-plates_obj.push("black plate")
-plates_obj.push("blue plate")
-plates_obj.get_stack()
-
-plates_obj.peek()
-plates_obj.pop()
-plates_obj.peek()
-
-
+    print("Top element is:", stack.peek())  # Output: Top element is: 30
     
+    print("Popped element is:", stack.pop())  # Output: Popped element is: 30
+    print("Top element is:", stack.peek())  # Output: Top element is: 20
+    
+    print("Is stack empty?", stack.is_empty())  # Output: Is stack empty? False
+    
+    stack.pop()
+    stack.pop()
+    
+    print("Is stack empty?", stack.is_empty())  # Output: Is stack empty? True    
